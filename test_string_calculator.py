@@ -36,4 +36,9 @@ def test_negative_numbers():
 def test_ignore_number_greater_than_1000():
     calc = stringCalculator()
     assert calc.add("2000,2") == 2
-    assert calc.add("2,1001") == 2 
+    assert calc.add("2,1001") == 2
+
+
+def test_more_len_delimiter():
+    calc = stringCalculator()
+    assert calc.add("//***\n1***2***3") == 6
