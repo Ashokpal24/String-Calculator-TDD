@@ -15,3 +15,8 @@ def test_single_number():
 def test_two_number():
     calc = stringCalculator()
     assert calc.add("1,2") == 3
+
+
+def test_newline_delimiter():
+    calc = stringCalculator()
+    assert calc.add("3\n4,5") == 12
