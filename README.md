@@ -108,4 +108,4 @@ This project is licensed under the MIT License.
 
 ### AUTHOR
 
-Ashok
+[Ashok Pal](https://github.com/Ashokpal24)
