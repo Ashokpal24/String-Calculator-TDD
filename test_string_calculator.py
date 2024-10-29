@@ -52,3 +52,19 @@ def test_diff_delimiter():
 def test_diff_delimiter_with_varied_len():
     calc = stringCalculator()
     assert calc.add("//[****][%]\n17****10%3") == 30
+
+
+def test_only_negative_numbers():
+    calc = stringCalculator()
+    with pytest.raises(ValueError, match="Negatives not allowed: -1,-2"):
+        calc.add("-1,-2")
+
+
+def test_multiple_delimiters_no_numbers():
+    calc = stringCalculator()
+    assert calc.add("//[*][%]\n") == 0
+
+
+def test_mixed_large_and_small_numbers():
+    calc = stringCalculator()
+    assert calc.add("1000,1001,2") == 1002

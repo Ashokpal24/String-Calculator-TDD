@@ -25,7 +25,9 @@ class stringCalculator:
         else:
             numbers = re.sub(r"[\n]", delimiters, numbers)
 
-        print(delimiters)
+        if not numbers:
+            return 0
+
         num_list = map(int, re.split(delimiters, numbers))
 
         # check for number greater than 1000
