@@ -9,7 +9,14 @@ class stringCalculator:
         if len(numbers) == 1 and numbers.isdigit():
             return int(numbers)
 
-        numbers = re.sub(r"[\n]", ",", numbers)
+        delimiter = ","
+
+        if numbers.startswith("//"):
+            delimiter, numbers = numbers[2:].split(
+                "\n", 1)  # get the delimiter and numbers
+        else:
+            numbers = re.sub(r"[\n]", delimiter, numbers)
+
         # print(numbers)
-        num_list = map(int, numbers.split(","))
+        num_list = map(int, numbers.split(delimiter))
         return sum(num_list)
