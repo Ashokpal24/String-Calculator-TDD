@@ -68,7 +68,7 @@ The project includes a comprehensive suite of tests that can be run with `pytest
 1. Run Tests:
 
    ```bash
-   pytest
+   pytest test_string_calculator.py
    ```
 
 2. Test Coverage:
