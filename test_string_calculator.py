@@ -25,3 +25,9 @@ def test_newline_delimiter():
 def test_custom_delimiter():
     calc = stringCalculator()
     assert calc.add("//;\n1;2") == 3
+
+
+def test_negative_numbers():
+    calc = stringCalculator()
+    with pytest.raises(ValueError, match="Negatives not allowed: -1,-3"):
+        calc.add("1,-1,2,-3")

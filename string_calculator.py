@@ -17,6 +17,10 @@ class stringCalculator:
         else:
             numbers = re.sub(r"[\n]", delimiter, numbers)
 
-        # print(numbers)
-        num_list = map(int, numbers.split(delimiter))
+        num_list = list(map(int, numbers.split(delimiter)))
+        negatives = [n for n in num_list if n < 0]
+        if negatives:
+            raise ValueError("Negatives not allowed: {}".format(
+                ",".join(map(str, negatives))))
+
         return sum(num_list)
