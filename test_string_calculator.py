@@ -44,6 +44,11 @@ def test_more_len_delimiter():
     assert calc.add("//[***]\n1***2***3") == 6
 
 
-def test_more_len_delimiter():
+def test_diff_delimiter():
     calc = stringCalculator()
     assert calc.add("//[*][%]\n1*2%3") == 6
+
+
+def test_diff_delimiter_with_varied_len():
+    calc = stringCalculator()
+    assert calc.add("//[****][%]\n17****10%3") == 30
