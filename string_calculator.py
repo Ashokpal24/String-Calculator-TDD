@@ -9,16 +9,24 @@ class stringCalculator:
         if len(numbers) == 1 and numbers.isdigit():
             return int(numbers)
 
-        delimiter = ","
+        delimiters = ","
 
         if numbers.startswith("//"):
-            # get the delimiter and numbers
-            delimiter, numbers = numbers[2:].split(
-                "\n", 1)
-        else:
-            numbers = re.sub(r"[\n]", delimiter, numbers)
+            # check if delimiters start are in [] and get list of it
+            delimiters = re.findall(r"\[(.*?)\]", numbers)
 
-        num_list = map(int, numbers.split(delimiter))
+            if delimiters == []:
+                # if list empty just get the delimiter (assuming only 1 delimiter exist without [])
+                delimiters, numbers = numbers[2:].split("\n")
+            else:
+                # if multiple delimiter exists in [] add escape and join using OR
+                numbers = numbers[2:].split("\n", 1)[1]
+                delimiters = "|".join(map(re.escape, delimiters))
+        else:
+            numbers = re.sub(r"[\n]", delimiters, numbers)
+
+        print(delimiters)
+        num_list = map(int, re.split(delimiters, numbers))
 
         # check for number greater than 1000
         num_list = [n for n in num_list if n < 1001]

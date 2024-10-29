@@ -41,4 +41,9 @@ def test_ignore_number_greater_than_1000():
 
 def test_more_len_delimiter():
     calc = stringCalculator()
-    assert calc.add("//***\n1***2***3") == 6
+    assert calc.add("//[***]\n1***2***3") == 6
+
+
+def test_more_len_delimiter():
+    calc = stringCalculator()
+    assert calc.add("//[*][%]\n1*2%3") == 6
